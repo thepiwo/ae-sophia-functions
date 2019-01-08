@@ -1,7 +1,5 @@
 contract List =
-  function size(l : list('a)) : int =
-    size'(l, 0)
-
+  function size(l : list('a)) : int = size'(l, 0)
   private function size'(l : list('a), x : int) : int =
     switch(l)
       [] => x
@@ -22,7 +20,6 @@ contract List =
       [] => s
       e :: l' => foldl(f, f(s, e), l')
 
-
   function filter(f : ('a) => bool, l : list('a), acc : list('a)) =
     switch(l)
       [] => acc
@@ -34,3 +31,9 @@ contract List =
 
   function sum(l : list('a), f : 'a => int) : int =
     foldr((x, y) => x + y, 0, map(f, l))
+
+  function reverse(l) = reverse'(l, [])
+  private function reverse'(l, a) =
+    switch(l)
+      [] => a
+      (e :: l') => reverse'(l', e :: a)
