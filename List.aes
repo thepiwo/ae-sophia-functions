@@ -25,3 +25,6 @@ contract List =
           filter(f, l', e :: acc)
         else
           filter(f, l', acc)
+
+  function sum(l : list('a), f : 'a => int) : int =
+    foldr((x, y) => x + y, 0, map(f, l))
