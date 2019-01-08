@@ -1,0 +1,8 @@
+contract Tuple =
+  function pair_first(tuple) =
+    switch(tuple)
+      (e, _) => e
+
+  function pair_second(tuple) =
+    switch(tuple)
+      (_, e) => e
