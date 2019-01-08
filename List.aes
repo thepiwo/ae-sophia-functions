@@ -17,7 +17,7 @@ contract List =
       [] => z
       e :: l' => f(e, foldr(f, z, l'))
       
-  private function foldl(f : (('b, 'a) => 'b), s: 'b, l : list('a)) : 'b =
+  function foldl(f : (('b, 'a) => 'b), s: 'b, l : list('a)) : 'b =
     switch(l)
       [] => s
       e :: l' => foldl(f, f(s, e), l')
