@@ -37,3 +37,12 @@ contract List =
     switch(l)
       [] => a
       (e :: l') => reverse'(l', e :: a)
+
+  function insert_by(f: (('a, 'a) => bool), x : 'a, l : list('a)) : list('a) =
+    switch(l)
+      [] => [x]
+      (e :: l') =>
+        if(f(x, e))
+          e :: insert_by(f, x, l')
+        else
+          x :: l
