@@ -20,14 +20,15 @@ contract List =
       [] => s
       e :: l' => foldl(f, f(s, e), l')
 
-  function filter(f : ('a) => bool, l : list('a), acc : list('a)) =
+  function filter(f : ('a) => bool, l : list('a)) = filter'(f, l, [])
+  private function filter'(f : ('a) => bool, l : list('a), acc : list('a)) =
     switch(l)
       [] => acc
       e :: l' =>
         if(f(e))
-          filter(f, l', e :: acc)
+          filter'(f, l', e :: acc)
         else
-          filter(f, l', acc)
+          filter'(f, l', acc)
 
   function find(l : list('a), f: 'a => bool) : option('a) =
     switch(l)
