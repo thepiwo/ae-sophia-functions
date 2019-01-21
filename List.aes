@@ -29,6 +29,15 @@ contract List =
         else
           filter(f, l', acc)
 
+  function find(l : list('a), f: 'a => bool) : option('a) =
+    switch(l)
+     [] => None
+     e :: l' =>
+      if(f(e))
+        Some(e)
+      else
+        find(l', f)
+
   function sum(l : list('a), f : 'a => int) : int =
     foldr((x, y) => x + y, 0, map(f, l))
 
