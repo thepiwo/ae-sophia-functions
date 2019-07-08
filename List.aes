@@ -56,3 +56,10 @@ namespace List =
           e :: insert_by(f, x, l')
         else
           x :: l
+
+  function foreach(f : 'a => 'b, l : list('a)) =
+    switch(l)
+     [] => []
+     e :: l' =>
+       f(e)
+       foreach(f, l')
