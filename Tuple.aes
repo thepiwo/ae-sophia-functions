@@ -1,4 +1,4 @@
-contract Tuple =
+namespace Tuple =
   function pair_first(tuple) =
     switch(tuple)
       (e, _) => e
