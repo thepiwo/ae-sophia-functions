@@ -1,0 +1,10 @@
+namespace Option =
+  function is_defined(o : option('a)) =
+    switch(o)
+      Some(_) => true
+      None => false
+
+  function get_or_abort(o : option('a), m : string) : 'a =
+    switch(o)
+      Some(r) => r
+      None => abort(m)
